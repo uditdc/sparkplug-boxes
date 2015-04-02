@@ -20,7 +20,7 @@ class SetwpNamespace(BaseNamespace):
         This function saves the
         """
 
-        self.FOLDER = os.path.abspath('../public_html/boxes/')
+        self.FOLDER = os.path.abspath('/var/www/boxes/')
 
         self.MYSQL_PATH = '/usr/bin/mysql'
         self.WP = {
@@ -47,7 +47,7 @@ class SetwpNamespace(BaseNamespace):
 
         # Create a directory for this installation
 
-        dest_path = self.FOLDER + '/' + box_id
+        dest_path = self.FOLDER + box_id
 
         if not os.path.exists(dest_path):
             os.makedirs(dest_path)
@@ -58,18 +58,15 @@ class SetwpNamespace(BaseNamespace):
         })
 
         # Download the zip archive from the repo
-        # archive = urllib.urlretrieve(
-        #     self.WP['URL'],
-        #     '%s/latest.zip' % dest_path
-        # )
-        # time.sleep(5)
-
-        archive = True
+        archive = urllib.urlretrieve(
+            self.WP['URL'],
+            '%s/latest.zip' % dest_path
+        )
 
         if archive:
             # The download was successful
             # Call the unzip function
-            print 'Download Started'
+            self.unzip
         else:
             # The Download was unsuccessful
             # Return a failure flag
@@ -85,9 +82,9 @@ class SetwpNamespace(BaseNamespace):
         :return: Success or Failure flag
         """
 
-        # archive = zipfile.ZipFile('%s/latest.zip' % dest_path, 'r')
-        # archive.extractall(dest_path)
-        time.sleep(5)
+        archive = zipfile.ZipFile('%s/latest.zip' % dest_path, 'r')
+        archive.extractall(dest_path)
+
         self.emit('download_complete', {
             'icon': 'cloud-download',
             'message': 'Download & Unzip complete '
