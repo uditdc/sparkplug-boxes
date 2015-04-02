@@ -20,7 +20,7 @@ class SetwpNamespace(BaseNamespace):
         This function saves the
         """
 
-        self.FOLDER = os.path.abspath('/var/www/boxes/')
+        self.FOLDER = os.path.abspath('/var/www/boxes')
 
         self.MYSQL_PATH = '/usr/bin/mysql'
         self.WP = {
@@ -44,14 +44,14 @@ class SetwpNamespace(BaseNamespace):
         :param box_id: The box id is used to name the directory
         :return: Success or Failure flag
         """
-
+	print "Function Called"
         # Create a directory for this installation
 
-        dest_path = self.FOLDER + box_id
+        dest_path = self.FOLDER + '/' + box_id
 
         if not os.path.exists(dest_path):
             os.makedirs(dest_path)
-
+	print "destination path :" + dest_path
         self.emit('status', {
             'icon': 'cloud-download',
             'message': 'Download Started'
@@ -66,7 +66,8 @@ class SetwpNamespace(BaseNamespace):
         if archive:
             # The download was successful
             # Call the unzip function
-            self.unzip
+	   print "calling unzip now"
+	   self.unzip(dest_path)
         else:
             # The Download was unsuccessful
             # Return a failure flag
@@ -85,7 +86,7 @@ class SetwpNamespace(BaseNamespace):
         archive = zipfile.ZipFile('%s/latest.zip' % dest_path, 'r')
         archive.extractall(dest_path)
 
-        self.emit('download_complete', {
+        self.emit('status', {
             'icon': 'cloud-download',
             'message': 'Download & Unzip complete '
         })
