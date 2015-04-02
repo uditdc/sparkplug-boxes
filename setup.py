@@ -12,7 +12,7 @@ requires = [
     'pyramid',
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
-    'waitress',
+    'gevent-socketio',
     ]
 
 setup(name='sparkplug-boxes',
