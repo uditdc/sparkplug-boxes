@@ -73,7 +73,7 @@ class SetwpNamespace(BaseNamespace):
             print 'Download Failed'
             self.emit('status', {'message': ('failed on %s' % dest_path)})
 
-    def on_unzip(self, dest_path):
+    def unzip(self, dest_path):
         """
         This function will unzip the previously downloaded
         zip file.
