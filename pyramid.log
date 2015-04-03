@@ -232,3 +232,13 @@ calling unzip now
 Unzip Completed
 Starting server in PID 13373.
 serving on http://0.0.0.0:5000
+Function Called
+destination path :/var/www/boxes/550ef3b827e6177e27f78867
+calling unzip now
+Unzip Completed
+82.221.105.6 - - [2015-04-02 20:52:04] "GET / HTTP/1.1" 200 3329 0.241625
+206.190.157.195 - - [2015-04-02 22:55:45] "GET / HTTP/1.1" 200 3344 0.002349
+206.190.157.195 - - [2015-04-02 22:55:46] "GET / HTTP/1.1" 200 3344 0.002262
+206.190.157.195 - - [2015-04-02 22:55:56] "GET / HTTP/1.1" 200 3332 0.002572
+206.190.157.195 - - [2015-04-02 22:55:56] "GET /static/theme.css HTTP/1.1" 200 3345 0.006180
+206.190.157.195 - - [2015-04-02 22:55:57] "GET /static/pyramid.png HTTP/1.1" 200 13359 0.001504
