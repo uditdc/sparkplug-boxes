@@ -66,8 +66,7 @@ class SetwpNamespace(BaseNamespace):
         if archive:
             # The download was successful
             # Call the unzip function
-	   print "calling unzip now"
-	   self.unzip(dest_path)
+            self.unzip(dest_path)
         else:
             # The Download was unsuccessful
             # Return a failure flag
