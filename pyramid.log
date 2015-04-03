@@ -1,0 +1,244 @@
+Starting server in PID 11283.
+serving on http://0.0.0.0:6543
+Starting server in PID 11291.
+serving on http://0.0.0.0:6543
+Traceback (most recent call last):
+  File "/home/sparkplug-boxes/env/bin/pserve", line 9, in <module>
+    load_entry_point('pyramid==1.5.4', 'console_scripts', 'pserve')()
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/scripts/pserve.py", line 58, in main
+    return command.run()
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/scripts/pserve.py", line 360, in run
+    serve()
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/scripts/pserve.py", line 339, in serve
+    server(app)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/PasteDeploy-1.5.2-py2.7.egg/paste/deploy/loadwsgi.py", line 189, in server_wrapper
+    **context.local_conf)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/PasteDeploy-1.5.2-py2.7.egg/paste/deploy/util.py", line 55, in fix_call
+    val = callable(*args, **kw)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent_socketio-0.3.6-py2.7.egg/socketio/server.py", line 185, in serve_paste
+    serve(app, **kw)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent_socketio-0.3.6-py2.7.egg/socketio/server.py", line 174, in serve
+    server.serve_forever()
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/baseserver.py", line 282, in serve_forever
+    self.start()
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/baseserver.py", line 234, in start
+    self.init_socket()
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/pywsgi.py", line 639, in init_socket
+    StreamServer.init_socket(self)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/server.py", line 78, in init_socket
+    self.socket = self.get_listener(self.address, self.backlog, self.family)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/server.py", line 89, in get_listener
+    return _tcp_listener(address, backlog=backlog, reuse_addr=self.reuse_addr, family=family)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/server.py", line 153, in _tcp_listener
+    sock.bind(address)
+  File "<string>", line 1, in bind
+socket.error: [Errno 98] Address already in use: ('0.0.0.0', 6543)
+Removing PID file pserve_5001.pid
+206.190.157.221 - - [2015-04-02 04:34:45] "GET / HTTP/1.1" 200 3344 0.090408
+Starting server in PID 11342.
+serving on http://127.0.0.1:5000
+Starting server in PID 11364.
+serving on http://0.0.0.0:5000
+206.190.157.221 - - [2015-04-02 04:41:52] "GET / HTTP/1.1" 200 3344 0.088116
+206.190.157.221 - - [2015-04-02 04:41:52] "GET /static/pyramid.png HTTP/1.1" 200 13359 0.001510
+206.190.157.221 - - [2015-04-02 04:41:52] "GET /static/theme.css HTTP/1.1" 200 3345 0.000547
+206.190.157.221 - - [2015-04-02 04:41:52] "GET /static/pyramid-16x16.png HTTP/1.1" 200 1776 0.000993
+206.190.157.221 - - [2015-04-02 04:45:13] "GET / HTTP/1.1" 200 3344 0.002584
+54.83.113.16 - - [2015-04-02 04:45:21] "GET / HTTP/1.1" 200 3344 0.001549
+54.83.113.16 - - [2015-04-02 04:45:49] "GET / HTTP/1.1" 200 3332 0.000768
+54.83.113.16 - - [2015-04-02 04:49:03] "GET / HTTP/1.1" 200 3332 0.000796
+206.190.157.221 - - [2015-04-02 04:55:22] "GET / HTTP/1.1" 200 3344 0.002029
+206.190.157.221 - - [2015-04-02 05:09:11] "GET / HTTP/1.1" 200 3332 0.001642
+206.190.157.221 - - [2015-04-02 05:09:11] "GET /static/pyramid.png HTTP/1.1" 200 13359 0.001620
+206.190.157.221 - - [2015-04-02 05:09:11] "GET /static/theme.css HTTP/1.1" 200 3345 0.000951
+206.190.157.221 - - [2015-04-02 05:09:12] "GET /static/pyramid-16x16.png HTTP/1.1" 200 1776 0.000903
+192.159.166.92 - - [2015-04-02 08:58:11] "GET / HTTP/1.1" 200 3344 0.003009
+Traceback (most recent call last):
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/pywsgi.py", line 508, in handle_one_response
+    self.run_application()
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/pywsgi.py", line 494, in run_application
+    self.result = self.application(self.environ, self.start_response)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/router.py", line 242, in __call__
+    response = self.invoke_subrequest(request, use_tweens=True)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/router.py", line 217, in invoke_subrequest
+    response = handle_request(request)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/tweens.py", line 21, in excview_tween
+    response = handler(request)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/router.py", line 163, in handle_request
+    response = view_callable(context, request)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/config/views.py", line 385, in viewresult_to_response
+    result = view(context, request)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/pyramid-1.5.4-py2.7.egg/pyramid/config/views.py", line 501, in _requestonly_view
+    response = view(request)
+  File "/home/sparkplug-boxes/sparkplugboxes/views.py", line 12, in socketio
+    socketio_manage(request.environ, {'/setwp': SetwpNamespace}, request=request)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent_socketio-0.3.6-py2.7.egg/socketio/__init__.py", line 67, in socketio_manage
+    socket = environ['socketio']
+KeyError: 'socketio'
+{'GATEWAY_INTERFACE': 'CGI/1.1',
+ 'HTTP_ACCEPT': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+ 'HTTP_ACCEPT_ENCODING': 'gzip, deflate, sdch',
+ 'HTTP_ACCEPT_LANGUAGE': 'en',
+ 'HTTP_CONNECTION': 'keep-alive',
+ 'HTTP_HOST': '128.199.82.197:5000',
+ 'HTTP_USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36',
+ 'PATH_INFO': '/socket.io/',
+ 'QUERY_STRING': '',
+ 'REMOTE_ADDR': '192.159.166.92',
+ 'REMOTE_PORT': '12967',
+ 'REQUEST_METHOD': 'GET',
+ 'SCRIPT_NAME': '',
+ 'SERVER_NAME': 'sparkplug-lemp',
+ 'SERVER_PORT': '5000',
+ 'SERVER_PROTOCOL': 'HTTP/1.1',
+ 'SERVER_SOFTWARE': 'gevent/1.0 Python/2.7',
+ 'wsgi.errors': <pyramid.scripts.pserve.LazyWriter object at 0x7f5c5b60c310>,
+ 'wsgi.input': <gevent.pywsgi.Input object at 0x7f5c59d9fa90>,
+ 'wsgi.multiprocess': False,
+ 'wsgi.multithread': False,
+ 'wsgi.run_once': False,
+ 'wsgi.url_scheme': 'http',
+ 'wsgi.version': (1, 0)} failed with KeyError
+
+192.159.166.92 - - [2015-04-02 08:58:22] "GET /socket.io/ HTTP/1.1" 500 161 0.006922
+125.227.212.140 - - [2015-04-02 08:58:24] "GET /favicon.ico HTTP/1.1" 404 527 0.002696
+Traceback (most recent call last):
+  File "/usr/local/bin/pserve", line 11, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 58, in main
+    return command.run()
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 328, in run
+    global_conf=vars)
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 363, in loadapp
+    return loadapp(app_spec, name=name, relative_to=relative_to, **kw)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 247, in loadapp
+    return loadobj(APP, uri, name=name, **kw)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 271, in loadobj
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 296, in loadcontext
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+    return loader.get_context(object_type, name, global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 454, in get_context
+    section)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+    object_type, name=use, global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 406, in get_context
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 296, in loadcontext
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 328, in _loadegg
+    return loader.get_context(object_type, name, global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 620, in get_context
+    object_type, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+    pkg_resources.require(self.spec)
+  File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 725, in require
+    needed = self.resolve(parse_requirements(requirements))
+  File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 628, in resolve
+    raise DistributionNotFound(req)
+pkg_resources.DistributionNotFound: sparkplug-boxes
+Removing PID file pserve_5000.pid
+Traceback (most recent call last):
+  File "/usr/local/bin/pserve", line 11, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 58, in main
+    return command.run()
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 328, in run
+    global_conf=vars)
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 363, in loadapp
+    return loadapp(app_spec, name=name, relative_to=relative_to, **kw)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 247, in loadapp
+    return loadobj(APP, uri, name=name, **kw)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 271, in loadobj
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 296, in loadcontext
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+    return loader.get_context(object_type, name, global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 454, in get_context
+    section)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+    object_type, name=use, global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 406, in get_context
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 296, in loadcontext
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 328, in _loadegg
+    return loader.get_context(object_type, name, global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 620, in get_context
+    object_type, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+    pkg_resources.require(self.spec)
+  File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 725, in require
+    needed = self.resolve(parse_requirements(requirements))
+  File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 628, in resolve
+    raise DistributionNotFound(req)
+pkg_resources.DistributionNotFound: sparkplug-boxes
+Removing PID file pserve_5000.pid
+Traceback (most recent call last):
+  File "/usr/local/bin/pserve", line 11, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 58, in main
+    return command.run()
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 325, in run
+    relative_to=base, global_conf=vars)
+  File "/usr/local/lib/python2.7/dist-packages/pyramid/scripts/pserve.py", line 367, in loadserver
+    server_spec, name=name, relative_to=relative_to, **kw)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 255, in loadserver
+    return loadobj(SERVER, uri, name=name, **kw)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 271, in loadobj
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 296, in loadcontext
+    global_conf=global_conf)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 317, in _loadconfig
+    loader = ConfigLoader(path)
+  File "/usr/local/lib/python2.7/dist-packages/paste/deploy/loadwsgi.py", line 393, in __init__
+    with open(filename) as f:
+IOError: [Errno 2] No such file or directory: '/home/sparkplug-boxes/prodcution.ini'
+Removing PID file pserve_5000.pid
+Starting server in PID 13187.
+serving on http://0.0.0.0:5000
+206.190.157.195 - - [2015-04-02 12:07:14] "GET / HTTP/1.1" 200 3344 0.194670
+206.190.157.195 - - [2015-04-02 12:07:14] "GET /static/theme.css HTTP/1.1" 304 420 0.002714
+206.190.157.195 - - [2015-04-02 12:07:15] "GET /static/pyramid.png HTTP/1.1" 304 420 0.002076
+Traceback (most recent call last):
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent/greenlet.py", line 327, in run
+    result = self._run(*self.args, **self.kwargs)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent_socketio-0.3.6-py2.7.egg/socketio/virtsocket.py", line 403, in _receiver_loop
+    retval = pkt_ns.process_packet(pkt)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent_socketio-0.3.6-py2.7.egg/socketio/namespace.py", line 155, in process_packet
+    return self.process_event(packet)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent_socketio-0.3.6-py2.7.egg/socketio/namespace.py", line 225, in process_event
+    return self.call_method_with_acl(method_name, packet, *args)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent_socketio-0.3.6-py2.7.egg/socketio/namespace.py", line 240, in call_method_with_acl
+    return self.call_method(method_name, packet, *args)
+  File "/home/sparkplug-boxes/env/local/lib/python2.7/site-packages/gevent_socketio-0.3.6-py2.7.egg/socketio/namespace.py", line 282, in call_method
+    return method(*args)
+  File "/home/sparkplug-boxes/sparkplugboxes/setwp.py", line 85, in on_unzip
+    archive = zipfile.ZipFile('%s/latest.zip' % dest_path, 'r')
+  File "/usr/lib/python2.7/zipfile.py", line 756, in __init__
+    self.fp = open(file, modeDict[mode])
+IOError: [Errno 2] No such file or directory: 'None/latest.zip'
+<Greenlet at 0x7f778e8747d0: <bound method Socket._receiver_loop of <socketio.virtsocket.Socket object at 0x7f778d9383d0>>> failed with IOError
+
+Starting server in PID 13253.
+serving on http://0.0.0.0:5000
+Starting server in PID 13350.
+serving on http://0.0.0.0:5000
+Function Called
+destination path :/var/www/boxes550ef3b827e6177e27f78867
+calling unzip now
+Unzip Completed
+Starting server in PID 13373.
+serving on http://0.0.0.0:5000
+Function Called
+destination path :/var/www/boxes/550ef3b827e6177e27f78867
+calling unzip now
+Unzip Completed
+82.221.105.6 - - [2015-04-02 20:52:04] "GET / HTTP/1.1" 200 3329 0.241625
+206.190.157.195 - - [2015-04-02 22:55:45] "GET / HTTP/1.1" 200 3344 0.002349
+206.190.157.195 - - [2015-04-02 22:55:46] "GET / HTTP/1.1" 200 3344 0.002262
+206.190.157.195 - - [2015-04-02 22:55:56] "GET / HTTP/1.1" 200 3332 0.002572
+206.190.157.195 - - [2015-04-02 22:55:56] "GET /static/theme.css HTTP/1.1" 200 3345 0.006180
+206.190.157.195 - - [2015-04-02 22:55:57] "GET /static/pyramid.png HTTP/1.1" 200 13359 0.001504

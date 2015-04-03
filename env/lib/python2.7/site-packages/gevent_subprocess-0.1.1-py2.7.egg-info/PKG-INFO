@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: gevent-subprocess
+Version: 0.1.1
+Summary: gevent adapter for the standard python subprocess
+Home-page: https://github.com/bombela/gevent_subprocess
+Author: François-Xavier Bourlet <bombela@gmail.com>
+Author-email: bombela@gmail.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
