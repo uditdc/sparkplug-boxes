@@ -24,11 +24,13 @@ class SetwpNamespace(BaseNamespace):
         This function saves the
         """
 
-        self.DOMAIN = 'charade.in'
-        # self.FOLDER = os.path.abspath('/var/www/boxes')
-        self.FOLDER = os.path.abspath('/home/sparkplug/public_html/boxes')
+        self.DOMAIN = 'wp01.charade.in'
+        self.FOLDER = os.path.abspath('/var/www/boxes')
         mysqlUsername = 'root'
-        mysqlPassword = 'pudongxinxu'
+        mysqlPassword = 'rZ2ARfxKIe'
+        # self.FOLDER = os.path.abspath('/home/sparkplug/public_html/boxes')
+        # mysqlUsername = 'root'
+        # mysqlPassword = 'pudongxinxu'
         self.MYSQL = {
             'BIN': '/usr/bin/mysql',
             'EXEC': " -u%s -p%s --host=localhost -f -e '" % (mysqlUsername, mysqlPassword),
@@ -390,7 +392,7 @@ class SetwpNamespace(BaseNamespace):
             "%s/%s/wp-cli.phar" % (self.FOLDER, box_data['id']),
             'core',
             'install',
-            '--path=%s/%s' % (self.FOLDER, box_data['id']),
+            # '--path=%s/%s' % (self.FOLDER, box_data['id']),
             '--url=%s' % box_data['id'] + '.' + self.DOMAIN,
             '--title="%s"' % box_data['name'],
             '--admin_user=%s' % box_data['username'],
