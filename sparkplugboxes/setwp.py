@@ -76,11 +76,14 @@ class SetwpNamespace(BaseNamespace):
                 'total': totalChecks
             })
             gevent.sleep(1)
+            if checks == totalChecks:
+                self.disconnect()
 
         if self.setupAbort:
             self.emit('setup_failure', {
                 'message': 'Sorry :( We could not setup your box ...'
             })
+            self.disconnect()
 
     def on_test_status(self, data):
         def progressBar(blocks, blockSize, totalSize):
