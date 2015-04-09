@@ -396,7 +396,7 @@ class SetwpNamespace(BaseNamespace):
             "sudo -u %s %s/%s/wp-cli.phar" % (userid, self.FOLDER, box_data['id']),
             'core',
             'install',
-            # '--path=%s/%s' % (self.FOLDER, box_data['id']),
+            '--path=%s/%s' % (self.FOLDER, box_data['id']),
             '--url=%s' % box_data['id'] + '.' + self.DOMAIN,
             '--title="%s"' % box_data['name'],
             '--admin_user=%s' % box_data['username'],
