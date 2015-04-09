@@ -388,8 +388,7 @@ class SetwpNamespace(BaseNamespace):
 
         userid = box_data['mysqlId']
         args = [
-            "sudo useradd -g www-data --system --no-create-home --disabled-login",
-            "--disabled-password %s &&" % box_data['mysqlId'],
+            "sudo useradd -g www-data --system --no-create-home %s &&" % box_data['mysqlId'],
             "chown www-data:www-data -R %s &&" % (self.FOLDER + '/' + box_data['id']),
             "sudo -u %s find %s -type d -exec chmod 755 {} \; &&" % (userid, self.FOLDER + '/' + box_data['id']),
             "sudo -u %s find %s -type f -exec chmod 644 {} \; &&" % (userid, self.FOLDER + '/' + box_data['id']),
