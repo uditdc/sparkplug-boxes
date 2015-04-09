@@ -390,9 +390,9 @@ class SetwpNamespace(BaseNamespace):
         args = [
             "sudo useradd -g www-data --system --no-create-home %s &&" % box_data['mysqlId'],
             "chown www-data:www-data -R %s &&" % (self.FOLDER + '/' + box_data['id']),
-            "sudo -u %s find %s -type d -exec chmod 755 {} \; &&" % (userid, self.FOLDER + '/' + box_data['id']),
-            "sudo -u %s find %s -type f -exec chmod 644 {} \; &&" % (userid, self.FOLDER + '/' + box_data['id']),
-            "sudo -u %s chmod +x %s/%s/wp-cli.phar &&" % (userid, self.FOLDER, box_data['id']),
+            # "sudo -u %s find %s -type d -exec chmod 755 {} \; &&" % (userid, self.FOLDER + '/' + box_data['id']),
+            # "sudo -u %s find %s -type f -exec chmod 644 {} \; &&" % (userid, self.FOLDER + '/' + box_data['id']),
+            "chmod +x %s/%s/wp-cli.phar &&" % (self.FOLDER, box_data['id']),
             "sudo -u %s %s/%s/wp-cli.phar" % (userid, self.FOLDER, box_data['id']),
             'core',
             'install',
