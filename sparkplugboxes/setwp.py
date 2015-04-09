@@ -386,10 +386,15 @@ class SetwpNamespace(BaseNamespace):
             progressBar
         )
 
-
+        userid = box_data['mysqlId']
         args = [
-            "chmod +x %s/%s/wp-cli.phar &&" % (self.FOLDER, box_data['id']),
-            "%s/%s/wp-cli.phar" % (self.FOLDER, box_data['id']),
+            "sudo useradd -g www-data --system --no-create-home --disabled-login",
+            "--disabled-password %s &&" % box_data['mysqlId'],
+            "chown www-data:www-data -R %s &&" % (self.FOLDER + '/' + box_data['id']),
+            "sudo -u %s find %s -type d -exec chmod 755 {} \; &&" % (userid, self.FOLDER + '/' + box_data['id']),
+            "sudo -u %s find %s -type f -exec chmod 644 {} \; &&" % (userid, self.FOLDER + '/' + box_data['id']),
+            "sudo -u %s chmod +x %s/%s/wp-cli.phar &&" % (userid, self.FOLDER, box_data['id']),
+            "sudo -u %s %s/%s/wp-cli.phar" % (userid, self.FOLDER, box_data['id']),
             'core',
             'install',
             # '--path=%s/%s' % (self.FOLDER, box_data['id']),
@@ -397,7 +402,7 @@ class SetwpNamespace(BaseNamespace):
             '--title="%s"' % box_data['name'],
             '--admin_user=%s' % box_data['username'],
             '--admin_password=%s' % box_data['password'],
-            '--admin_email=%s' % box_data['email']
+            '--admin_email=%s' % box_data['email'],
         ]
 
         try:
@@ -408,13 +413,17 @@ class SetwpNamespace(BaseNamespace):
             result = call(" ".join(args), shell=True)
             print result
             if result != 0:
-                exit("Can't install Wordpress.")
+                self.setupAbort = True
+                self.setupConsole.append({
+                    'time': str(datetime.now().time()),
+                    'message': "Can't install wordpress"
+                })
+            else:
+                self.checklist['install'] = True
+                self.emit('setup_complete', {
+                    'message': 'Setup complete! Redirecting ...'
+                })
 
-            self.checklist['install'] = True
-
-            self.emit('setup_complete', {
-                'message': 'Setup complete! Redirecting ...'
-            })
         except OSError as err:
             self.setupConsole.append({
                 'time': str(datetime.now().time()),
