@@ -13,18 +13,18 @@ requires = [
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
     'gevent-socketio',
-    ]
+]
 
 setup(name='sparkplug-boxes',
       version='0.0',
       description='sparkplug-boxes',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
-        "Programming Language :: Python",
-        "Framework :: Pyramid",
-        "Topic :: Internet :: WWW/HTTP",
-        "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
-        ],
+          "Programming Language :: Python",
+          "Framework :: Pyramid",
+          "Topic :: Internet :: WWW/HTTP",
+          "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+      ],
       author='',
       author_email='',
       url='',
@@ -39,4 +39,4 @@ setup(name='sparkplug-boxes',
       [paste.app_factory]
       main = sparkplugboxes:main
       """,
-      )
+)

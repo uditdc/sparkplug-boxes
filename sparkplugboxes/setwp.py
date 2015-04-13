@@ -24,6 +24,33 @@ class SetwpNamespace(BaseNamespace):
         This function saves the
         """
 
+        self.regions = [
+            {
+                "id": "local",
+                "name": "Localhost",
+                "domain": "localhost",
+                "folder": "/Applications/XAMPP/htdocs",
+                "mysqlUsername": "root",
+                "mysqlPassword": ""
+            },
+            {
+                "id": "hangzhou",
+                "name": "Hangzhou",
+                "domain": "114.215.179.27",
+                "folder": "/home/sparkplug/public_html/boxes",
+                "mysqlUsername": "root",
+                "mysqlPassword": "pudongxinxu"
+            },
+            {
+                "id": "singapore",
+                "name": "Singapore",
+                "domain": "wp01.charade.in",
+                "folder": "/var/www/boxes",
+                "mysqlUsername": "root",
+                "mysqlPassword": "rZ2ARfxKIe"
+            },
+        ]
+
         self.DOMAIN = 'wp01.charade.in'
         self.FOLDER = os.path.abspath('/var/www/boxes')
         mysqlUsername = 'root'
@@ -31,12 +58,14 @@ class SetwpNamespace(BaseNamespace):
         # self.FOLDER = os.path.abspath('/home/sparkplug/public_html/boxes')
         # mysqlUsername = 'root'
         # mysqlPassword = 'pudongxinxu'
+
         self.MYSQL = {
             'BIN': '/usr/bin/mysql',
             'EXEC': " -u%s -p%s --host=localhost -f -e '" % (mysqlUsername, mysqlPassword),
             'FLUSH': 'FLUSH PRIVILEGES',
             'USER_MAX_LEN': 16
         }
+
         self.WP = {
             'URL': 'http://wordpress.org/latest.zip',
             'SALT': 'https://api.wordpress.org/secret-key/1.1/salt/'
@@ -66,7 +95,7 @@ class SetwpNamespace(BaseNamespace):
         :return:
         """
         while not self.setupAbort:
-            totalChecks = len(self.checklist.values())
+            total_checks = len(self.checklist.values())
             checks = sum(self.checklist.values())
 
             self.emit('status', {

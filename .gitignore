@@ -1,2 +1,5 @@
 env
 *.pyc
+build/
+dist/
+pserve_5000.pid
