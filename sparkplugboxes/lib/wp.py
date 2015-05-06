@@ -213,3 +213,4 @@ class SparkUpWP(SparkUpNamespace):
         else:
             self.sparkup_checklist.update({'install': 1})
             self.log("WordPress installation successful!")
+            self.complete()
