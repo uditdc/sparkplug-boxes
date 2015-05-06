@@ -36,7 +36,7 @@ setup(name='sparkplug-boxes',
       tests_require=requires,
       test_suite="sparkplugboxes",
       entry_points="""\
-      [paste.app_factory]
-      main = sparkplugboxes:main
-      """,
+          [paste.app_factory]
+          main = sparkplugboxes:main
+          """,
 )

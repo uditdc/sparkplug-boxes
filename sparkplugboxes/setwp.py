@@ -42,22 +42,20 @@ class SetwpNamespace(BaseNamespace):
                 "mysqlPassword": "pudongxinxu"
             },
             {
-                "id": "singapore",
-                "name": "Singapore",
-                "domain": "wp01.charade.in",
+                "id": "sanfransisco",
+                "name": "San Fransisco",
+                "domain": "sf01.charade.in",
                 "folder": "/var/www/boxes",
                 "mysqlUsername": "root",
                 "mysqlPassword": "rZ2ARfxKIe"
             },
         ]
 
-        self.DOMAIN = 'wp01.charade.in'
-        self.FOLDER = os.path.abspath('/var/www/boxes')
-        mysqlUsername = 'root'
-        mysqlPassword = 'rZ2ARfxKIe'
-        # self.FOLDER = os.path.abspath('/home/sparkplug/public_html/boxes')
-        # mysqlUsername = 'root'
-        # mysqlPassword = 'pudongxinxu'
+        self.CURRENT_REGION = 2
+        self.DOMAIN = self.regions[self.CURRENT_REGION]['domain']
+        self.FOLDER = os.path.abspath(self.regions[self.CURRENT_REGION]['folder'])
+        mysqlUsername = self.regions[self.CURRENT_REGION]['mysqlUsername']
+        mysqlPassword = self.regions[self.CURRENT_REGION]['mysqlPassword']
 
         self.MYSQL = {
             'BIN': '/usr/bin/mysql',
@@ -379,6 +377,7 @@ class SetwpNamespace(BaseNamespace):
             return os.system(sql)
 
         try:
+            cur.execute()
             create = mysql_exec(self.MYSQL['CREATE'])
             grant = mysql_exec(self.MYSQL['GRANT'])
             if (create + grant) == 0:

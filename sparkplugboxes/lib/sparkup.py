@@ -1,7 +1,8 @@
 import abc
 import gevent
+import logging
 from datetime import datetime
-from inspect import getmembers, isfunction
+from inspect import getmembers, isfunction, ismethod
 from socketio.namespace import BaseNamespace
 
 
@@ -11,27 +12,33 @@ class SparkUpNamespace(BaseNamespace):
     """
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, environ, ns_name):
+    def __init__(self, environ, ns_name, request):
         """
         Initialize global variables to be used
         for status messages and progress
         """
-        super(SparkUpNamespace, self).__init__(environ, ns_name)
+        super(SparkUpNamespace, self).__init__(environ, ns_name, request)
+
+        # Log everything, and send it to stderr.
+        logging.basicConfig(level=logging.DEBUG)
 
         # TODO: Remove the region declaration from here to pymongo
         self.region = {
-            'id': 'local',
-            'name': 'Localhost',
-            'domain': 'localhost',
-            'folder': '/Applications/XAMPP/htdocs',
+            'id': 'singapore',
+            'name': 'Singapore',
+            'domain': 'charade.in',
+            'folder': '/var/www/boxes',
             'mysqlUsername': 'root',
-            'mysqlPassword': '',
+            'mysqlPassword': 'rZ2ARfxKIe',
             'mysqlBin': '/usr/bin/mysql',
-            'EXEC': " -u%s -p%s --host=localhost -f -e '" % (
-                self.region['mysqlUsername'], self.region['mysqlUsername']),
-            'FLUSH': 'FLUSH PRIVILEGES',
-            'USER_MAX_LEN': 16
+            'mysqlFLUSH': 'FLUSH PRIVILEGES',
+            'mysqlUSER_MAX_LEN': 16
         }
+
+        self.region.update({
+            'mysqlExec': "-u%s -p%s --host=localhost -f -e" % (
+                self.region['mysqlUsername'], self.region['mysqlPassword'])
+        })
 
         self.sparkup_abort = False
         self.sparkup_error = ''
@@ -50,7 +57,7 @@ class SparkUpNamespace(BaseNamespace):
             'email': None,
             'mysqlId': None,
             'mysqlPwd': None,
-        }
+            }
 
         self.spawn_job_progress = None
         self.allow_reconnect = False
@@ -60,6 +67,9 @@ class SparkUpNamespace(BaseNamespace):
         Initialize all the global properties here
         Retrive region specific details,
         """
+        logging.debug('---------------- START ----------------')
+        print '---------------- START ----------------'
+
         if self.allow_reconnect:
             self.spawn_job_progress = self.spawn(self.job_progress)
 
@@ -78,41 +88,53 @@ class SparkUpNamespace(BaseNamespace):
         """
 
     def log(self, message):
+        print message
         self.sparkup_message = message
         self.sparkup_console.append({
             'message': message,
             'time': str(datetime.now().time()),
         })
+        gevent.sleep(1)
 
     def abort(self, message=""):
         if message == "":
             message = "Sorry we couldn't setup your box!"
 
-        self.sparkup_abort = True
-        self.log(message)
+        self.emit('setup_failure', {
+            'message': message
+        })
+        self.spawn_job_progress.kill()
+        self.disconnect()
+        logging.debug('WP setup aborted')
+        print('WP setup aborted')
 
     def complete(self, message=""):
         if message == "":
-            message = "You'r box has been setup! Redirecting now .."
+            message = "Your box has been setup! Redirecting now .."
 
-        self.log(message)
+        self.emit('setup_complete', {
+            'message': message
+        })
         self.disconnect()
+        logging.debug('WP setup completed')
+        print('WP setup completed')
 
     def on_start(self, box_data):
         self.box_data = box_data
         self.spawn_job_progress = self.spawn(self.job_progress)
 
-        functions_list = [o for o in getmembers(self) if isfunction(o[1])]
+        logging.debug('WP setup started')
+        print 'WP setup started'
+
+        functions_list = [o for o in getmembers(self) if isfunction(o[1]) or ismethod(o[1])]
         for func in (val for key, val in functions_list if key.startswith('task_')):
             func()
 
-    @abc.abstractmethod
     def job_progress(self):
         """
         This function sends the current box setup status to the client
         """
         while not self.sparkup_abort:
-
             total_checks = len(self.sparkup_checklist.values())
             checks = sum(self.sparkup_checklist.values())
 
@@ -123,6 +145,10 @@ class SparkUpNamespace(BaseNamespace):
                 'total': total_checks
             })
             gevent.sleep(1)
+
+            print self.sparkup_checklist
+            print checks
+            print total_checks
 
             if checks == total_checks:
                 self.complete()
