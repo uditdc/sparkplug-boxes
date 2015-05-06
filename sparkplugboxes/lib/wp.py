@@ -139,6 +139,10 @@ class SparkUpWP(SparkUpNamespace):
         # If not, then create the path
         if not os.path.exists(path):
             os.makedirs(path)
+            chown_args = [
+                'chown %s:%s %s' % (self.box_data['mysqlId'], 'www-data', path),
+            ]
+            chown_result = subprocess.call(chown_args, shell=True)
             logging.debug("Directory Created @ %s", path)
 
         # Check if wp cli exists
