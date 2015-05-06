@@ -149,7 +149,7 @@ class SparkUpWP(SparkUpNamespace):
 
         # Download the zip archive from the repo using the cli
         download_args = [
-            "%s core download" % (self.WP['CLI']),
+            "sudo -u %s %s core download" % (self.box_data['mysqlId'], self.WP['CLI']),
             "--path=%s" % path,
             "--force"
         ]
