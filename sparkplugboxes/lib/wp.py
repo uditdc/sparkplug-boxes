@@ -198,7 +198,7 @@ class SparkUpWP(SparkUpNamespace):
             self.log("WordPress config updated")
 
         install_args = [
-            "sudo -u %s %s core install" % (self.WP['CLI']),
+            "sudo -u %s %s core install" % (self.box_data['mysqlId'], self.WP['CLI']),
             '--path=%s/%s' % (self.region['folder'], self.box_data['id']),
             '--url=%s' % self.box_data['id'] + '.' + self.region['domain'],
             '--title="%s"' % self.box_data['name'],
