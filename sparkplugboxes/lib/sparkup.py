@@ -1,6 +1,7 @@
 import abc
 import gevent
 import logging
+import json
 from datetime import datetime
 from inspect import getmembers, isfunction, ismethod
 from socketio.namespace import BaseNamespace
@@ -23,19 +24,12 @@ class SparkUpNamespace(BaseNamespace):
         logging.basicConfig(level=logging.DEBUG)
 
         # TODO: Remove the region declaration from here to pymongo
-        self.region = {
-            'id': 'singapore',
-            'name': 'Singapore',
-            'domain': 'charade.in',
-            'folder': '/var/www/boxes',
-            'mysqlUsername': 'root',
-            'mysqlPassword': 'rZ2ARfxKIe',
-            'mysqlBin': '/usr/bin/mysql',
-            'mysqlFLUSH': 'FLUSH PRIVILEGES',
-            'mysqlUSER_MAX_LEN': 16
-        }
+        with open('regions.json') as data_file:
+            self.region = json.load(data_file)
 
         self.region.update({
+            'mysqlFLUSH': 'FLUSH PRIVILEGES',
+            'mysqlUSER_MAX_LEN': 16,
             'mysqlExec': "-u%s -p%s --host=localhost -f -e" % (
                 self.region['mysqlUsername'], self.region['mysqlPassword'])
         })

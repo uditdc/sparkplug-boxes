@@ -1,0 +1,9 @@
+[{
+  "id": "singapore",
+  "name": "Singapore",
+  "domain": "charade.in",
+  "folder": "/var/www/boxes",
+  "mysqlUsername": "root",
+  "mysqlPassword": "rZ2ARfxKIe",
+  "mysqlBin": "/usr/bin/mysql"
+}]
